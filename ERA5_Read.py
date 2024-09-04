@@ -1,3 +1,4 @@
+### 此檔案將每日ERA5的資料合併為單一.npz檔案，以便後續讀取
 
 import netCDF4 as nc
 import numpy as np
