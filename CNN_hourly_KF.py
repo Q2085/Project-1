@@ -27,9 +27,9 @@ if torch.cuda.is_available(): torch.cuda.manual_seed_all(myseed)
 
 ### 讀取 TCCIP 資料
 t0 = (datetime(1980, 1, 1) - datetime(1960, 1, 1)).days
-prec = nc.Dataset("TCCIP_GriddedRain_TWN.nc").variables['PREC_5km'][t0:]
-dates = np.loadtxt('FTdate_56_f1980.txt', dtype=str)
-dates = np.array([datetime.strptime(date_str, "%Y%m%d") # + timedelta(days=1) #TODO: 可設定改成預測 n 天以後的降雨
+prec = nc.Dataset('./Data/TCCIP_GriddedRain_TWN.nc').variables['PREC_5km'][t0:]
+dates = np.loadtxt('./Data/FTdate_56_f1980.txt', dtype=str)
+dates = np.array([datetime.strptime(date_str, '%Y%m%d') # + timedelta(days=1) #TODO: 可設定改成預測 n 天以後的降雨
                   for date_str in dates]) 
 
 days = (dates - datetime(1980, 1, 1)).astype('timedelta64[D]').astype(int)
@@ -37,7 +37,7 @@ prec = prec[days]
 
 
 ### 讀取 ERA5 資料
-X = np.load('vars_hr_f1980.npz')['var']
+X = np.load('./Data/vars_hr_f1980.npz')['var']
 
 ### Normalizing ERA5 Data
 X = (X - np.mean(X, axis=(0,2,3))[np.newaxis, :, np.newaxis, np.newaxis]) / np.std(X, axis=(0,2,3))[np.newaxis, :, np.newaxis, np.newaxis]
@@ -244,8 +244,8 @@ print("MCC : ", matthews_corrcoef(all_Y_true, all_Y_pred))
 ### 輸出預測結果
 opt = np.transpose(np.vstack((all_Y_true, all_Y_pred)))
 if input("Continue to export? (y/n)\n") == 'y':
-    torch.save(model.state_dict(), 'CNN_0824.pth')
-    np.savetxt('Y_true_pred_f1980.txt', opt, fmt='%i', 
+    # torch.save(model.state_dict(), 'CNN_0824.pth')
+    np.savetxt('./Data/Y_true_pred_f1980.txt', opt, fmt='%i', 
                 header = f'True\tPred\t\t{np.mean(fold_accuracies):.4f}')
 
 #%%
@@ -262,12 +262,12 @@ background = X_train[:].to(device)
 e = shap.GradientExplainer(model, background)
 # e = shap.DeepExplainer(model, background)
 
-n = 940  # TODO: 選擇要使用多少樣本進行全市
+n = 940  # TODO: 選擇要使用多少樣本進行詮釋
 sample = random.sample(range(940), n)
 test_images = X[sample]
 
-true, pred = np.loadtxt('Y_true_pred_f1980.txt', skiprows=1, unpack=True, dtype=int)
-dates = np.loadtxt('FTdate_56_f1980.txt', dtype=str)
+true, pred = np.loadtxt('./Data/Y_true_pred_f1980.txt', skiprows=1, unpack=True, dtype=int)
+dates = np.loadtxt('./Data/FTdate_56_f1980.txt', dtype=str)
 dates = dates[sample]
 
 shap_all = np.zeros((n, 4, 81, 69, 31))
@@ -278,6 +278,6 @@ for i, test_image in enumerate(test_images):
     if(i % 10 == 0): print(f'{i} Completed')
 
 if input("Continue to export? (y/n)\n") == 'y':
-    np.savez('shap_f1980.npz', shap=shap_all)
-    np.savetxt('shap_samples.txt', sample, fmt='%i')
+    np.savez('./Data/shap_f1980.npz', shap=shap_all)
+    np.savetxt('./Data/shap_samples.txt', sample, fmt='%i')
 
