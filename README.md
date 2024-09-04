@@ -42,7 +42,7 @@ TCCIP（臺灣氣候變遷推估資訊與調適知識平台計畫）統整歷史
 
 ### 3.2 模型設計
 
-![本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer](%E2%9B%85%20%E8%87%BA%E7%81%A3%E6%A2%85%E9%9B%A8%E5%AD%A3%E9%99%8D%E9%9B%A8%E4%BA%8B%E4%BB%B6%E4%B9%8B%E5%88%86%E6%9E%90%200e794e26785b4aea834db8eaf574ccd5/CNN%25E7%25B5%2590%25E6%25A7%258B.png.jpg)
+![本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer](/pic/CNN.jpg)
 
 本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer
 
