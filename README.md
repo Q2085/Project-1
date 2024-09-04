@@ -42,7 +42,7 @@ TCCIP（臺灣氣候變遷推估資訊與調適知識平台計畫）統整歷史
 
 ### 3.2 模型設計
 
-![本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer](/pic/CNN.jpg#pic_center=600x)
+![本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer](/pic/CNN.jpg#pic_center=200x)
 
 本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer
 
@@ -50,7 +50,7 @@ TCCIP（臺灣氣候變遷推估資訊與調適知識平台計畫）統整歷史
 
 訓練過程中，樣本被切分為4份並採用 K-Fold 交叉驗證。隨後，將4次驗證集的預測結果相加，並一併繪製於下圖的混淆矩陣中。
 
-![image.png](/pic/image.png)
+![image.png](/pic/image.png#pic_center=200x)
 
 圖表顯示，在所有梅雨季的鋒面事件中，CNN模型能夠較準確地預測兩種極端情況：大雨（>145mm）或幾乎無雨（<40mm）。然而，對於中等強度的降雨，模型的預測則較為混淆。
 
