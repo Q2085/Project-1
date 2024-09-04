@@ -8,9 +8,9 @@ plt.rcParams['font.family'] = 'Noto Sans CJK TC'
 
 
 ### Read the SHAP values
-shap = np.load('shap_f1980.npz')['shap']
-shap_sample = np.loadtxt('shap_samples.txt', dtype=int)
-true, pred = np.loadtxt('Y_true_pred_f1980.txt', skiprows=1, unpack=True)[:, shap_sample]
+shap = np.load('./Data/shap_f1980.npz')['shap']
+shap_sample = np.loadtxt('./Data/shap_samples.txt', dtype=int)
+true, pred = np.loadtxt('./Data/Y_true_pred_f1980.txt', skiprows=1, unpack=True)[:, shap_sample]
 
 lon = np.arange(110, 127.1, 0.25)
 lat = np.arange(30, 9.9, -0.25)
@@ -20,7 +20,7 @@ lev = np.array([200, 500, 700, 850, 1000])
 ### Plot the attribution bar charts
 yt, yp = 3, 3 # TODO
 mask = (true==yt) & (pred==yp)
-dates = np.loadtxt('FTdate_56_f1980.txt', dtype=str)
+dates = np.loadtxt('./Data/FTdate_56_f1980.txt', dtype=str)
 dates = dates[shap_sample][mask]
 
 Class = yt
@@ -71,7 +71,7 @@ m2 = create_basemap(ax[1], lon, lat)
 
 ### Plotting SHAP & specified varable
 ch = title.index('Z1000')  # TODO
-X = np.load('vars_hr_f1980.npz')['var'][shap_sample]
+X = np.load('./Data/vars_hr_f1980.npz')['var'][shap_sample]
 X[:,0,:,:]  *= 1e5
 X[:,-1,:,:] *= 1e2
 X[:,5:10,:,:] /= 9.8
@@ -101,13 +101,13 @@ plt.tight_layout()
 
 ### Plot TCCIP Rainfall
 t0 = (datetime(1980, 1, 1) - datetime(1960, 1, 1)).days
-dates = np.loadtxt('FTdate_56_f1980.txt', dtype=str)
+dates = np.loadtxt('./Data/FTdate_56_f1980.txt', dtype=str)
 dates = np.array([datetime.strptime(date_str, "%Y%m%d") # + timedelta(days=1) #TODO
                   for date_str in dates]) 
 
 days = (dates - datetime(1980, 1, 1)).astype('timedelta64[D]').astype(int)
 dates = dates[shap_sample][mask]
-prec = nc.Dataset("TCCIP_GriddedRain_TWN.nc").variables['PREC_5km'][t0:][days][shap_sample][mask]
+prec = nc.Dataset("./Data/TCCIP_GriddedRain_TWN.nc").variables['PREC_5km'][t0:][days][shap_sample][mask]
 
 
 fig = plt.figure(figsize=(5,8), dpi=200)
@@ -122,12 +122,12 @@ norm = mcolor.BoundaryNorm(bounds, ncolors=len(color)-1)
 
 m = Basemap(projection='cyl',
             llcrnrlon=119.9, llcrnrlat=21.8,
-            urcrnrlon=122.1, urcrnrlat=25.4, resolution='l')
+            urcrnrlon=122.1, urcrnrlat=25.4, resolution='h')
 m.drawparallels(np.arange(22, 25.31, 0.5), labels=[1,0,0,0], linewidth=0.2)
 m.drawmeridians(np.arange(119,122.51,0.5), labels=[0,0,0,1], linewidth=0.2)
 m.drawcoastlines(linewidth=0.8)
 
-topo= nc.Dataset("TOPO.nc").variables['TOPO'][:]*100
+topo= nc.Dataset("./Data/TOPO.nc").variables['TOPO'][:]*100
 lon_, lat_ = np.meshgrid(np.linspace(118.6387,123.3957,1024), np.linspace(21.21948,25.97643,1024))
 plt.contourf(lon_, lat_, topo, cmap='Greys')
 
