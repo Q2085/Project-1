@@ -1,3 +1,5 @@
+### 此檔案繪製給定日期之天氣圖，與選定氣象變數之重要性詮釋
+
 import numpy as np
 from datetime import datetime
 import matplotlib.pyplot as plt
@@ -10,16 +12,16 @@ lat = np.arange(30, 9.9, -0.25)
 lev = np.array([200, 500, 700, 850, 1000])
 
 target_date = 20050502  #TODO
-dates = np.loadtxt('FTdate_56_f1980.txt', dtype=int)
+dates = np.loadtxt('./Data/FTdate_56_f1980.txt', dtype=int)
 target_date_i = np.where(dates == target_date)[0]
-X = np.load('vars_hr_f1980.npz')['var'][target_date_i]
+X = np.load('./Data/vars_hr_f1980.npz')['var'][target_date_i]
 X[:,0,:,:]  *= 1e5
 X[:,-1,:,:] *= 1e2
 
-shap_sample = np.loadtxt('shap_samples.txt', dtype=int)
+shap_sample = np.loadtxt('./Data/shap_samples.txt', dtype=int)
 target_date_i = np.where(dates == target_date)[0]
 target_date_j = np.where(shap_sample == target_date_i)[0]
-shap = np.load('shap_f1980.npz')['shap'][target_date_j].squeeze()
+shap = np.load('./Data/shap_f1980.npz')['shap'][target_date_j].squeeze()
 
 
 ### 繪圖變數指定 & 標題文字處理
@@ -109,6 +111,8 @@ ax[0].set_title(f'ERA5 Reanalysis [{title_date}]\n'
 plt.tight_layout()
 
 #%%
+
+### 繪製選定日期之氣象參數貢獻度長條圖
 n = 8
 attri_ch = np.sum(shap[Class], axis=(0,1))
 top_n_indices = np.argsort(abs(attri_ch))[-n:] 
