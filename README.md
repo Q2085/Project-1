@@ -68,7 +68,7 @@ TCCIP（臺灣氣候變遷推估資訊與調適知識平台計畫）統整歷史
     
     為解決這個問題，研究者提出了 ”Integrated Gradient” 方法。以卷積神經網路（CNN）為例，此方法首先選定一個基準（Baseline），比如全黑圖片，然後將此基準圖片以不同「透明度」與輸入圖片進行內插，並把這個過程中，輸出值對輸入值的梯度積分起來。
     
-    ![圖片取自：[https://github.com/d246810g2000/Explainable_AI/blob/main/DL/02_Gradient-Based.ipynb](https://github.com/d246810g2000/Explainable_AI/blob/main/DL/02_Gradient-Based.ipynb)]("/pic/image1.png")
+    ![img]("/pic/image%201.png")
     
     圖片取自：[https://github.com/d246810g2000/Explainable_AI/blob/main/DL/02_Gradient-Based.ipynb](https://github.com/d246810g2000/Explainable_AI/blob/main/DL/02_Gradient-Based.ipynb)
     
@@ -80,7 +80,7 @@ TCCIP（臺灣氣候變遷推估資訊與調適知識平台計畫）統整歷史
 ### 4.2 藉由模型認識強降雨特徵
 
 ![U：緯向（東西向）風速、V：經向（南北向）風速、PW：可降水量、Z：重力位高度、D：輻散、W：垂直速度。
-數字代表高度場，比如 U1000 指的是 1000 百帕（hPa）的緯向風速](/pic/image 2.png)
+數字代表高度場，比如 U1000 指的是 1000 百帕（hPa）的緯向風速](/pic/image%202.png)
 
 U：緯向（東西向）風速、V：經向（南北向）風速、PW：可降水量、Z：重力位高度、D：輻散、W：垂直速度。
 數字代表高度場，比如 U1000 指的是 1000 百帕（hPa）的緯向風速
@@ -105,19 +105,19 @@ U：緯向（東西向）風速、V：經向（南北向）風速、PW：可降�
 
 東部降雨的4個案例中，1998年5月30日和1986年5月26日（①、②）都是受到熱帶性低氣壓的影響，這類降雨並不在原先設定的訓練目標內，以下討論先將其排除在外。
 
-![image.png](/pic/image 4.png)
+![image.png](/pic/image%204.png)
 
-![8個被模型誤判為幾乎無雨（＜40mm）的強降雨事件（＞145mm）](/pic/image 5.png)
+![8個被模型誤判為幾乎無雨（＜40mm）的強降雨事件（＞145mm）](/pic/image%205.png)
 
 8個被模型誤判為幾乎無雨（＜40mm）的強降雨事件（＞145mm）
 
 我們可以透過可解釋性方法，來了解可能是哪些特徵，讓模型做出錯誤決策。以⑥、⑦號降雨事件為例，下圖繪製了這兩個案例中，各個氣象參數對於預測 >145mm 的貢獻。圖片顯示，低層風場資訊（如U850）以及可降水量（PW），對預測分類 >145mm 有負貢獻，是讓傾向於讓模型誤判的主要參數。
 
-![image.png](/pic/image 6.png)
+![image.png](/pic/image%206.png)
 
 進一步畫出這些氣象參數，以及對應的重要性貢獻空間分布如下。左半邊繪製850百帕天氣圖、中間繪製可降水量（PW）的重要性貢獻、右半邊繪製850百帕緯向風（U850）的重要性貢獻。
 
-![image.png](/pic/image 7.png)
+![image.png](/pic/image%207.png)
 
 ![左：850 百帕天氣圖，顏色代表可降水量、等值線代表重力位高度
 中：可降水量對於預測 >145mm 的重要性貢獻
