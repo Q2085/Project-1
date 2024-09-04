@@ -1,3 +1,5 @@
+### 此檔案繪製多個樣本之合成平均
+
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
