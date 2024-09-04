@@ -3,7 +3,7 @@
 import netCDF4 as nc
 import numpy as np
 
-rootgrp = nc.Dataset('./ERA5/2001050100.nc')
+rootgrp = nc.Dataset('./Data/ERA5/2001050100.nc')
 
 ### 可以快速檢視變數名稱
 # import re
@@ -14,12 +14,12 @@ lon = rootgrp.variables['longitude'][:]
 lat = rootgrp.variables['latitude'][:]
 lev = rootgrp.variables['level'][:]
 
-dates = np.loadtxt('FTdate_56_f1980.txt', dtype=str)
+dates = np.loadtxt('./Data/FTdate_56_f1980.txt', dtype=str)
 var = np.zeros((len(dates), 31, len(lat), len(lon)))
 
 for i, date in enumerate(dates):
     
-    rootgrp = nc.Dataset(f'./ERA5/{date}00.nc')
+    rootgrp = nc.Dataset(f'./Data/ERA5/{date}00.nc')
     
     # vor = rootgrp.variables['vo'][0, 1] 
     d = rootgrp.variables['d'][0] 
@@ -34,4 +34,4 @@ for i, date in enumerate(dates):
 
     var[i] = np.vstack([d, z, T, u, v, w, IWV[np.newaxis]])
 
-np.savez('vars_hr_f1980.npz', var = var)
+np.savez('./Data/vars_hr_f1980.npz', var = var)
