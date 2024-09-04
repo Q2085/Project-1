@@ -8,10 +8,10 @@ lat = np.arange(30, 9.9, -0.25)
 lev = np.array([200, 500, 700, 850, 1000])
 
 yt, yp = 3, 3  # TODO
-true, pred = np.loadtxt('Y_true_pred_f1980.txt', skiprows=1, unpack=True)
+true, pred = np.loadtxt('./Data/Y_true_pred_f1980.txt', skiprows=1, unpack=True)
 mask = (true==yt) & (pred==yp)
-X = np.load('vars_hr_f1980.npz')['var'][mask]
-dates = np.loadtxt('FTdate_56_f1980.txt', dtype=str)[mask]
+X = np.load('./Data/vars_hr_f1980.npz')['var'][mask]
+dates = np.loadtxt('./Data/FTdate_56_f1980.txt', dtype=str)[mask]
 
 X = np.mean(X, 0)
 X[0,:,:]  *= 1e5
