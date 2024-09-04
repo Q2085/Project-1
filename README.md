@@ -42,7 +42,7 @@ TCCIP（臺灣氣候變遷推估資訊與調適知識平台計畫）統整歷史
 
 ### 3.2 模型設計
 
-![本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer](/pic/CNN.jpg)
+![本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer](/pic/CNN.jpg pic_center=600x)
 
 本專題所採用的CNN模型設計，共有3層 Convolution layer 與2層 Max-pool layer
 
@@ -68,7 +68,7 @@ TCCIP（臺灣氣候變遷推估資訊與調適知識平台計畫）統整歷史
     
     為解決這個問題，研究者提出了 ”Integrated Gradient” 方法。以卷積神經網路（CNN）為例，此方法首先選定一個基準（Baseline），比如全黑圖片，然後將此基準圖片以不同「透明度」與輸入圖片進行內插，並把這個過程中，輸出值對輸入值的梯度積分起來。
     
-    ![img]("/pic/image%201.png")
+    ![img](/pic/image%201.png)
     
     圖片取自：[https://github.com/d246810g2000/Explainable_AI/blob/main/DL/02_Gradient-Based.ipynb](https://github.com/d246810g2000/Explainable_AI/blob/main/DL/02_Gradient-Based.ipynb)
     
