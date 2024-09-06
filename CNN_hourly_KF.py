@@ -1,3 +1,5 @@
+### 此檔案訓練CNN模型，並使用SHAP套件計算各樣本的特徵重要性權重
+
 import netCDF4 as nc
 import numpy as np
 from datetime import datetime, timedelta
