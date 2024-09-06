@@ -73,8 +73,6 @@ TCCIP（臺灣氣候變遷推估資訊與調適知識平台計畫）統整歷史
     
     ![img](/pic/image%201.png)
     
-    圖片取自：[https://github.com/d246810g2000/Explainable_AI/blob/main/DL/02_Gradient-Based.ipynb](https://github.com/d246810g2000/Explainable_AI/blob/main/DL/02_Gradient-Based.ipynb)
-    
     然而，Integrated Gradient 方法仍存在一些問題。例如，若以黑色圖片作為基準，那麼當輸入圖片中含有黑色部分時，這些區域就不會被納入積分計算，使該區域的重要性被低估。
     
     在 Expected Gradient 方法中，將不再沿著給定基準與輸入圖片內差的路徑積分。相對的，可以想像在整個訓練集中，每個像素的數值大小會有各自的分布，而 Expected Gradient 方法便會參照這個分布來進行積分。
