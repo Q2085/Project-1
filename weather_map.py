@@ -11,7 +11,7 @@ lon = np.arange(110, 127.1, 0.25)
 lat = np.arange(30, 9.9, -0.25)
 lev = np.array([200, 500, 700, 850, 1000])
 
-target_date = 20050502  #TODO
+target_date = 20050502  #TODO: 指定繪圖日期
 dates = np.loadtxt('./Data/FTdate_56_f1980.txt', dtype=int)
 target_date_i = np.where(dates == target_date)[0]
 X = np.load('./Data/vars_hr_f1980.npz')['var'][target_date_i]
