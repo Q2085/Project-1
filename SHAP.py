@@ -4,7 +4,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolor
 from mpl_toolkits.basemap import Basemap
-plt.rcParams['font.family'] = 'Noto Sans CJK TC'
+plt.rcParams['font.family'] = ['Noto Sans CJK TC', 'Microsoft JhengHei', 'Calibri']
 
 
 ### Read the SHAP values
