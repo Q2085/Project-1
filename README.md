@@ -11,9 +11,10 @@
 
 ### 2.1 主要分析工具
 
-- 皆以 Python 進行繪圖與分析
+- 以 Python 進行繪圖與分析
 - 機器學習框架使用 PyTorch
 - XAI 部分使用到 SHAP 套件
+- 其餘套件：NumPy, Matplotlib, Datetime, Basemap
 
 ### 2.2 資料集
 
