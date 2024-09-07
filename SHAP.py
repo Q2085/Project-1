@@ -1,3 +1,8 @@
+
+''' ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+  此檔案篩選樣本，並繪製其重要性詮釋合成平均 
+    ˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍˍ '''
+
 import netCDF4 as nc
 import numpy as np
 from datetime import datetime
