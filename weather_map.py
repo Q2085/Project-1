@@ -4,7 +4,7 @@ import numpy as np
 from datetime import datetime
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
-plt.rcParams['font.family'] = 'Noto Sans CJK TC'
+plt.rcParams['font.family'] = ['Noto Sans CJK TC', 'Microsoft JhengHei', 'Calibri']
 
 ### Read the data
 lon = np.arange(110, 127.1, 0.25)
