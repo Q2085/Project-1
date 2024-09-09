@@ -7,7 +7,7 @@ import netCDF4 as nc
 import numpy as np
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
-plt.rcParams['font.family'] = 'Noto Sans CJK TC'  # 設定繪圖字體
+plt.rcParams['font.family'] = ['Noto Sans CJK TC', 'Microsoft JhengHei', 'Calibri']
 
 import torch
 import torch.nn as nn
